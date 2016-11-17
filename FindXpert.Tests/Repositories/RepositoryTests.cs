@@ -7,6 +7,7 @@ using System.IO;
 using System.Threading;
 using FindXpert.Repository.Contracts;
 using FindXpert.Repository.Entities;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -35,8 +36,8 @@ namespace FindXpert.Tests.Repositories
             RepositoryTestClass repositoryTest = new RepositoryTestClass(mockExpertRepository.Object);
 
             IEnumerable<Expert> ret = repositoryTest.GetExperts();
-
-            Assert.IsTrue(ret == experts);
+            ret.Should().BeSameAs(experts);
+            //Assert.IsTrue(ret == experts);
         }
 
         [TestMethod]
@@ -101,6 +102,7 @@ namespace FindXpert.Tests.Repositories
         public IEnumerable<Expert> GetExperts()
         {
             IExpertRepository carRepository = _DataRepositoryFactory.GetDataRepository<IExpertRepository>();
+
 
             IEnumerable<Expert> experts = carRepository.Get();
 
