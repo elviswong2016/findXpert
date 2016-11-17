@@ -38,8 +38,7 @@ namespace FindXpert.Tests.Repositories
 
             Assert.IsTrue(ret == experts);
         }
-//// Test commit
-/// Confirmed
+
         [TestMethod]
         public void test_factory_mocking2()
         {
